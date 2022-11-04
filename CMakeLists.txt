@@ -7,11 +7,20 @@ project(ball_detection_ros)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
+# set(OpenCV_DIR "/home/qingyu/opencv/build")
+set(OpenCV_DIR "/usr/local/lib/cmake/opencv4/")
+
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  geometry_msgs
+  sensor_msgs
+  cv_bridge
+  image_transport
+  OpenCV
 )
+# FIND_LIBRARY(MYLIB NAMES libdarknet.so PATHS /lib)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -118,8 +127,9 @@ catkin_package(
 include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
+  include
 )
-
+link_directories(${catkin_LIB_DIRS} lib) 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/ball_detection_ros.cpp
@@ -134,7 +144,7 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/ball_detection_ros_node.cpp)
-
+add_executable(ball_detection src/ball_detection.cpp)
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
@@ -149,6 +159,9 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
+# target_include_directories(ball_detection PRIVATE include/)
+
+target_link_libraries(ball_detection ${catkin_LIBRARIES}  darknet)
 
 #############
 ## Install ##
