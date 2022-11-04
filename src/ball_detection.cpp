@@ -138,17 +138,25 @@ void PingpongDetector::publish_best_detection(std::vector<bbox_t> const result_v
 void  PingpongDetector::callback_img(const sensor_msgs::CompressedImageConstPtr& msg){
  try
   {
-        double secs1 =ros::Time::now().toSec();
-
+    double cvConvert_begin_secs =ros::Time::now().toSec();
     cv::Mat image = cv::imdecode(cv::Mat(msg->data), cv::IMREAD_UNCHANGED);//convert compressed image data to cv::Mat
-    double secs2 =ros::Time::now().toSec();
+    double cvConvert_end_secs =ros::Time::now().toSec();
 
     uint8_t* pixelPtr = (uint8_t*)image.data;
 
+    double convert_begin_secs =ros::Time::now().toSec();
     compressed_to_image_t(pixelPtr);
+    double convert_end_secs =ros::Time::now().toSec();
 
+
+    double yolo_begin_secs =ros::Time::now().toSec();
     std::vector<bbox_t> result_vec = detector->detect(yolo_image);
-    std::cout<<"detection time = " << secs2-secs1<<std::endl;
+    double yolo_end_secs =ros::Time::now().toSec();
+
+    std::cout<<"Read from ROS to cv::Mat time = " << cvConvert_end_secs-cvConvert_begin_secs<<std::endl;
+    std::cout<<"Convert cv::Mat to image_t time = " << convert_end_secs-convert_begin_secs<<std::endl;
+    std::cout<<"YOLO detection time = " << yolo_end_secs-yolo_begin_secs<<std::endl;
+
     // show_console_result(result_vec);
 
     std_msgs::Header header;

@@ -1,7 +1,7 @@
 
-yolo_cfg: "/home/qingyu/catkin_ws/src/ball_detection_ros/yolo_cfg/yolov4-tiny-tennis.cfg"
+yolo_cfg: "/home/mcg-lab/catkin_ws/src/ball_tracking/ball_detection_ros/yolo_cfg/yolov4-tiny-tennis.cfg"
 
-yolo_weights: "/home/qingyu/catkin_ws/src/ball_detection_ros/yolo_cfg/yolov4-tiny-tennis_900.weights"
+yolo_weights: "/home/mcg-lab/catkin_ws/src/ball_tracking/ball_detection_ros/yolo_cfg/yolov4-tiny-tennis_900.weights"
 
 
 
