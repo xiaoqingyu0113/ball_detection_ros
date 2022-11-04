@@ -138,43 +138,17 @@ void PingpongDetector::publish_best_detection(std::vector<bbox_t> const result_v
 void  PingpongDetector::callback_img(const sensor_msgs::CompressedImageConstPtr& msg){
  try
   {
+        double secs1 =ros::Time::now().toSec();
+
     cv::Mat image = cv::imdecode(cv::Mat(msg->data), cv::IMREAD_UNCHANGED);//convert compressed image data to cv::Mat
+    double secs2 =ros::Time::now().toSec();
+
     uint8_t* pixelPtr = (uint8_t*)image.data;
+
     compressed_to_image_t(pixelPtr);
-    // float* pixelPtr_imt;
-    // pixelPtr_imt = image_data;
-
-
-    // for(int i =2; i< 3932160; i=i+3){
-    //   *pixelPtr_imt = int(pixelPtr[i])/255.;
-    //   if (*pixelPtr_imt>1.0){
-    //     std::cout << "overflowed" <<std::endl;
-    //     return;
-    //   }
-    //   pixelPtr_imt ++;
-    // }
-
-    // for(int i =1; i< 3932160; i=i+3){
-    //   *pixelPtr_imt = int(pixelPtr[i])/255.;
-    //   if (*pixelPtr_imt>1.0){
-    //     std::cout << "overflowed" <<std::endl;
-    //     return;
-    //   }
-    //   pixelPtr_imt ++;
-    // }
-    // for(int i =0; i< 3932160; i=i+3){
-    //   *pixelPtr_imt = int(pixelPtr[i])/255.;
-    //   if (*pixelPtr_imt>1.0){
-    //     std::cout << "overflowed" <<std::endl;
-    //     return;
-    //   }
-    //   pixelPtr_imt ++;
-    // }
-   
-
 
     std::vector<bbox_t> result_vec = detector->detect(yolo_image);
-
+    std::cout<<"detection time = " << secs2-secs1<<std::endl;
     // show_console_result(result_vec);
 
     std_msgs::Header header;

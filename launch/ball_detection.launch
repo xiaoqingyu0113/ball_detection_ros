@@ -6,12 +6,12 @@
         <param name="cam_id" type="string" value="1" /> 
     </node>
 
-    <node name="cam2_yolo" pkg="ball_detection_ros" type="ball_detection" output="screen">
+    <!-- <node name="cam2_yolo" pkg="ball_detection_ros" type="ball_detection" output="screen">
         <param name="cam_id" type="string" value="2" /> 
     </node>
 
     <node name="cam3_yolo" pkg="ball_detection_ros" type="ball_detection" output="screen">
         <param name="cam_id" type="string" value="3" /> 
-    </node>
+    </node> -->
 
 </launch>
