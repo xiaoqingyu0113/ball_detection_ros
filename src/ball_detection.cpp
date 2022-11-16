@@ -153,9 +153,9 @@ void  PingpongDetector::callback_img(const sensor_msgs::CompressedImageConstPtr&
     std::vector<bbox_t> result_vec = detector->detect(yolo_image);
     double yolo_end_secs =ros::Time::now().toSec();
 
-    std::cout<<"Read from ROS to cv::Mat time = " << cvConvert_end_secs-cvConvert_begin_secs<<std::endl;
-    std::cout<<"Convert cv::Mat to image_t time = " << convert_end_secs-convert_begin_secs<<std::endl;
-    std::cout<<"YOLO detection time = " << yolo_end_secs-yolo_begin_secs<<std::endl;
+    // std::cout<<"Read from ROS to cv::Mat time = " << cvConvert_end_secs-cvConvert_begin_secs<<std::endl;
+    // std::cout<<"Convert cv::Mat to image_t time = " << convert_end_secs-convert_begin_secs<<std::endl;
+    // std::cout<<"YOLO detection time = " << yolo_end_secs-yolo_begin_secs<<std::endl;
 
     // show_console_result(result_vec);
 

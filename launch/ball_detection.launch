@@ -15,4 +15,6 @@
         <param name="cam_id" type="string" value="3" /> 
     </node>
 
+     <node name="triangulation" pkg="ball_detection_ros" type="triangulation_node.py" output="screen"></node>
+
 </launch>   

@@ -99,7 +99,7 @@ class MultiBallSync:
 
 
     def callback(self,msg1,msg2,msg3):
-
+        t = rospy.Time.now().to_sec()
         uv1= np.array([msg1.point.x,msg1.point.y]).astype('int')
         uv2= np.array([msg2.point.x,msg2.point.y]).astype('int')
         uv3= np.array([msg3.point.x,msg3.point.y]).astype('int')
@@ -111,7 +111,7 @@ class MultiBallSync:
         p_stamped.header = header
         p_stamped.point = p
         self.pub.publish(p_stamped)
-        
+        # print(rospy.Time.now().to_sec() - t)
 
 
 if __name__ == '__main__':
