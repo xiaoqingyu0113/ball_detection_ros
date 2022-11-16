@@ -90,7 +90,7 @@ class MultiBallSync:
         self.image_sub3 = message_filters.Subscriber("/camera_3/image_color/uv_ball", PointStamped)
 
         self.tss = message_filters.ApproximateTimeSynchronizer([self.image_sub1, self.image_sub2,self.image_sub3],
-                                                               queue_size=4, slop=0.010)
+                                                               queue_size=30, slop=0.030)
         self.tss.registerCallback(self.callback)
 
         self.pub = rospy.Publisher('/ball_xyz', PointStamped, queue_size=1)
