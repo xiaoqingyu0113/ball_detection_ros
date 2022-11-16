@@ -1,5 +1,6 @@
 <launch>
-
+    <include file="$(find spinnaker_camera_driver)/launch/cameras.launch"/>
+    
     <rosparam command="load" file="$(find ball_detection_ros)/config/yolo_cfg_path.yaml" />
 
     <node name="cam1_yolo" pkg="ball_detection_ros" type="ball_detection" output="screen">

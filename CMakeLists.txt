@@ -9,7 +9,7 @@ project(ball_detection_ros)
 ## is used, also find other catkin packages
 # set(OpenCV_DIR "/home/qingyu/opencv/build")
 set(OpenCV_DIR "/home/mcg-lab/software/lib/cmake/opencv4/")
-
+set(CMAKE_BUILD_TYPE Release)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy

@@ -13,7 +13,7 @@
 #include <opencv4/opencv2/opencv.hpp>
 #include <opencv4/opencv2/imgcodecs.hpp>
 #include <opencv4/opencv2/core.hpp>
-#include <opencv4/opencv2/highgui/highgui.hpp>
+// #include <opencv4/opencv2/highgui/highgui.hpp>
 #include "yolo_v2_class.hpp" 
 
 
